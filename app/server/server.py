@@ -37,7 +37,7 @@ def create_app(name=None):
                 threshold = float(flask.request.form["threshold"])
                 ## match
                 model = strings_matcher(dtf_lookup, dtf_match)
-                dtf_out = model.vlookup(threshold=threshold)
+                dtf_out = model.vlookup(threshold=threshold, top=top)
                 xlsx_out = model.write_excel(dtf_out)
                 return flask.send_file(xlsx_out, attachment_filename='StringsMatcher.xlsx', as_attachment=True)             
             else:

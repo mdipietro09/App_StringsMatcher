@@ -3,7 +3,6 @@ import pandas as pd
 import re
 from sklearn import feature_extraction, metrics
 import io
-import base64
 
 
 
@@ -42,7 +41,7 @@ class strings_matcher():
         return dtf_matches
     
     
-    def vlookup(self, threshold=0.7):
+    def vlookup(self, threshold=0.7, top=1):
         ## process data
         lst_lookup = list(set( self.dtf_lookup.iloc[:,0].tolist() ))
         lst_match = list(set( self.dtf_match.iloc[:,0].tolist() ))
@@ -50,7 +49,7 @@ class strings_matcher():
         ## match strings
         dtf_matches = pd.DataFrame(columns=['lookup', 'match', "similarity"])
         for string in lst_lookup:
-            dtf_match = self.match_strings(string, lst_match, threshold=threshold, top=1)
+            dtf_match = self.match_strings(string, lst_match, threshold=threshold, top=top)
             dtf_matches = dtf_matches.append(dtf_match)
         dtf_matches = dtf_matches.reset_index()
         dtf_matches = dtf_matches.drop("index", axis=1)
