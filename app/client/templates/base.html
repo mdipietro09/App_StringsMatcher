@@ -24,7 +24,7 @@
 
     <!-- TOP NAV BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:black;">
-        <a class="navbar-brand"><img src="{{ url_for('static', filename='favicon.PNG') }}" alt="logo" style="width:40px;"></a>
+        <a class="navbar-brand"><img src="{{ url_for('static', filename='logo.PNG') }}" alt="logo" style="width:60px;"></a>
         <div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="/">Matcher<span class="sr-only">(current)</span></a></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links</a>
@@ -36,7 +36,10 @@
         </ul></div>
     </nav>
     <script>
-        $(".navbar-nav li a").on("click", function(){ $(this).addClass("active"); });
+        $(".navbar-nav li a").on("click", function(){ 
+            $(this).addClass("active");
+            setTimeout(function(){ $(".navbar-nav li a").removeClass("active"); }, 1000)
+        });
     </script>
     
     
