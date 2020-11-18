@@ -2,12 +2,11 @@
 #                            RUN MAIN                                         #
 ###############################################################################
 
-from instance.config.app_settings import *
-from instance.config.file_system import *
+from settings import config
 from app.server import server
 
 
 
-app = server.create_app(name=name)
+app = server.create_app()
 
-app.run(host=host, port=port, threaded=threaded, debug=debug)
+app.run(host=config.host, port=config.port, debug=config.debug)
