@@ -5,17 +5,16 @@
 # setup
 ## pkg
 import flask
-import threading
 import pandas as pd
 
-from model.strings_matcher import strings_matcher
+from model.string_matcher import StringMatcher
 from settings import config
 
 ## app
 app = flask.Flask(__name__, 
 				instance_relative_config=True, 
-       			template_folder=config.root+'app/client/templates',
-                static_folder=config.root+'app/client/static')
+       			template_folder=config.root+'client/templates',
+                static_folder=config.root+'client/static')
 
 
 
@@ -30,10 +29,8 @@ def index():
 			top = int(flask.request.form["top"])
 			threshold = float(flask.request.form["threshold"])
 
-			threading.Thread(target=alive).start()
-
 			## match
-			model = strings_matcher(dtf_lookup, dtf_match)
+			model = StringMatcher(dtf_lookup, dtf_match)
 			dtf_out = model.vlookup(threshold=threshold, top=top)
 			xlsx_out = model.write_excel(dtf_out)
 			return flask.send_file(xlsx_out, attachment_filename='StringsMatcher.xlsx', as_attachment=True)             
@@ -58,12 +55,6 @@ def internal_server_error(e):
 
 
 
-## thread
-def alive():
-	return "..."
-
-
-
-## run
+# run
 if __name__ == "__main__":
     app.run(host=config.host, port=config.port, debug=config.debug)
