@@ -1,3 +1,3 @@
-# App to quickly Match Strings with Python
+# App for String Matching with NLP & Python
 
 https://stringsmatcher.herokuapp.com/
