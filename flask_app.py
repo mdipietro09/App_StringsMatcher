@@ -24,10 +24,13 @@ def index():
 	try:
 		if flask.request.method == 'POST':
 			## data from client
+			app.logger.info(flask.request.files)
+			app.logger.info(flask.request.form)
 			dtf_lookup = pd.read_excel(flask.request.files["dtf_lookup"])
 			dtf_match = pd.read_excel(flask.request.files["dtf_match"])
-			top = int(flask.request.form["top"])
 			threshold = float(flask.request.form["threshold"])
+			top = 1 if flask.request.form["top"].strip() == "" else int(flask.request.form["top"])
+			app.logger.warning("--- Inputs Received ---")
 
 			## match
 			model = StringMatcher(dtf_lookup, dtf_match)
