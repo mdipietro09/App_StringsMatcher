@@ -36,7 +36,7 @@ def index():
 			model = StringMatcher(dtf_lookup, dtf_match)
 			dtf_out = model.vlookup(threshold=threshold, top=top)
 			xlsx_out = model.write_excel(dtf_out)
-			return flask.send_file(xlsx_out, attachment_filename='StringsMatcher.xlsx', as_attachment=True)             
+			return flask.send_file(xlsx_out, download_name='StringsMatcher.xlsx')             
 		else:
 			return flask.render_template("index.html")
 

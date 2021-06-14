@@ -1,2 +1,14 @@
 __pycache__/
 .spyproject/
+*.DS_Store
+.vs/ProjectSettings.json
+.gitignore
+.vs/slnx.sqlite
+.gitignore
+.vs/App_StringsMatcher/FileContentIndex/2e7fd523-d9f0-4b85-8c67-cddd20f9d3a6.vsidx
+.vs/App_StringsMatcher/FileContentIndex/read.lock
+.vs/App_StringsMatcher/v17/.wsuo
+.vs/App_StringsMatcher/v17/TestStore/0/000.testlog
+.vs/App_StringsMatcher/v17/TestStore/0/testlog.manifest
+.vs/VSWorkspaceState.json
+settings/219B4E30
