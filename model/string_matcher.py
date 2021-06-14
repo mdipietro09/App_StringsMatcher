@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn import feature_extraction, metrics
 import io
+from tqdm import tqdm
 
 
 
@@ -42,7 +43,7 @@ class StringMatcher():
         
         ## match strings
         dtf_matches = pd.DataFrame(columns=['string','match','similarity'])
-        for string in lst_left:
+        for string in tqdm(lst_left):
             dtf_match = self.utils_string_matching(string, lst_right, threshold, top)
             dtf_match = dtf_match.reset_index().rename(columns={'index':'match', string:'similarity'})
             dtf_match["string"] = string
